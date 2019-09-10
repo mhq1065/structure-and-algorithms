@@ -1,3 +1,4 @@
+// 顺序线性表
 #include <stdio.h>
 #include <iostream>
 using namespace std;
