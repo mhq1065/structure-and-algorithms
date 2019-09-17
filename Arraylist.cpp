@@ -25,6 +25,7 @@ public:
 template <class T>
 class Alist :public List<T> {
 public:
+	T* listArray;//暴露数组
 	Alist(const int size = DefaultListSize)
 	{
 		maxSize = size;
@@ -50,7 +51,6 @@ private:
 	int maxSize;
 	int listSize;
 	int curr;
-	T* listArray;
 };
 
 int main()
@@ -61,7 +61,9 @@ int main()
 	a.append(6);
 	a.append(3);
 	a.append(67);
-	a.print();
+	cout << &a.listArray[0] << endl;
+	cout << &a.listArray[1] << endl;
+	cout << &a.listArray[2] << endl;
 	return 0;
 }
 
@@ -117,5 +119,3 @@ void Alist<T>::print() const
 	}
 	cout << listArray[listSize - 1];
 }
-
-
