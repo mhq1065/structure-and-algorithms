@@ -16,7 +16,7 @@ public:
 	virtual void next() = 0;//移动到后继
 	virtual void prev() = 0;//移动到前驱
 	virtual void setPos(int pos) = 0;//指定任意位置
-	virtual T getValue()const = 0;//获取当前位置值
+	virtual T getValue(int n)const = 0;//获取值
 	virtual	bool IsEmpty() = 0;//判断是否为空
 	virtual bool IsFull() = 0;//判断是否为满
 	virtual void print() const = 0;//打印
@@ -25,7 +25,6 @@ public:
 template <class T>
 class Alist :public List<T> {
 public:
-	T* listArray;//暴露数组
 	Alist(const int size = DefaultListSize)
 	{
 		maxSize = size;
@@ -42,12 +41,13 @@ public:
 	void next() { if (curr < listSize - 1)curr++; }
 	void prev() { if (curr > 0)curr--; }
 	void setPos(int pos) { if (pos < listSize && pos >= 0)curr = pos; }
-	T getValue() const { return listArray[curr]; }
+	T getValue(int n) const { return listArray[n]; }//不保证超出listsize
 	bool IsFull() { if (listSize < maxSize)return false; else return true; }
 	bool IsEmpty() { if (listSize == 0)return true; else return false; }
 	void print()const;
 
 private:
+	T* listArray;//暴露数组
 	int maxSize;
 	int listSize;
 	int curr;
@@ -61,9 +61,9 @@ int main()
 	a.append(6);
 	a.append(3);
 	a.append(67);
-	cout << &a.listArray[0] << endl;
-	cout << &a.listArray[1] << endl;
-	cout << &a.listArray[2] << endl;
+	cout << a.getValue(2) << endl;
+	cout << a.getValue(3) << endl;
+	cout << a.getValue(4) << endl;
 	return 0;
 }
 
