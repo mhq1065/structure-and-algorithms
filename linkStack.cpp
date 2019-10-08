@@ -3,14 +3,17 @@
 using namespace std;
 
 template <typename T>
+class linkStack; //必须先声明
+
+template <typename T>
 class linkStackNode {
+    friend class linkStack<T>;
+
 private:
     T ele;
     linkStackNode<T> *next;
 
 public:
-    template <typename X>
-    friend class linkStack;
     linkStackNode(const T &element, linkStackNode<T> *p = NULL) : ele(element), next(p){};
 };
 
