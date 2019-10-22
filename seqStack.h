@@ -1,6 +1,4 @@
 //顺序栈
-#include <iostream>
-using namespace std;
 
 template <class T>
 class SeqStack {
@@ -86,17 +84,4 @@ T SeqStack<T>::getpop() {
     } else {
         return base[top - 1];
     }
-}
-
-int main() {
-    SeqStack<int> test(5);
-    cout << test.isEmpty() << endl;
-    test.push(3);
-    test.push(5);
-    test.push(7);
-    cout << test.pop() << endl;
-    cout << test.pop() << endl;
-    cout << test.getpop() << endl;
-    cout << test.isFull() << endl;
-    return 0;
 }

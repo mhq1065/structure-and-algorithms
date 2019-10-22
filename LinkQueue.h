@@ -1,7 +1,5 @@
 //队列链式储存 无头节点
-#include <iostream>
 #include <stdio.h>
-using namespace std;
 
 template <typename T>
 class LinkQueue;
@@ -107,14 +105,4 @@ void LinkQueue<T>::LinkQueueClear() {
     }
     font = rear = NULL;
     return;
-}
-
-int main(){
-    LinkQueue<int> l;
-    l.InQueue(3);
-    l.InQueue(5);
-    l.InQueue(6);
-    cout << l.OutQueue() << endl;
-    cout << l.LinkQueueLength() << endl;
-    return 0;
 }

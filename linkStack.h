@@ -1,6 +1,5 @@
 //链栈
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 template <typename T>
 class linkStack; //必须先声明
@@ -77,16 +76,4 @@ T linkStack<T>::pop() {
 template <typename T>
 T linkStack<T>::getpop() {
     return top->ele;
-}
-
-int main() {
-    linkStack<int> test;
-    cout << test.isEmpty() << endl;
-    test.push(3);
-    test.push(5);
-    test.push(7);
-    cout << test.pop() << endl;
-    cout << test.pop() << endl;
-    cout << test.getpop() << endl;
-    return 0;
 }

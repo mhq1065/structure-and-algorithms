@@ -1,6 +1,4 @@
 //循环队列
-#include <iostream>
-using namespace std;
 
 template <typename T>
 class seqQueue {
@@ -24,20 +22,6 @@ private:
     T *queue; //定义数组
     int maxsize;
 };
-
-int main() {
-    seqQueue<int> a(3);
-    a.inQueue(2);
-    a.inQueue(4);
-    a.inQueue(5);
-    cout << a.queueLength() << endl;
-    a.outQueue();
-    cout << a.queueLength() << endl;
-    cout << a.outQueue() << endl;
-    a.inQueue(3);
-    cout << a.queueLength() << endl;
-    return 0;
-}
 
 template <typename T>
 bool seqQueue<T>::isEmpty() const {
