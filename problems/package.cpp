@@ -1,7 +1,7 @@
 #include "../linkStack.h"
 #include <algorithm>
 #include <iostream>
-
+//简易背包
 using namespace std;
 const int T = 10;
 const int w[6] = {1, 8, 4, 3, 5, 2};
@@ -54,36 +54,49 @@ public:
         return top->getEle();
     }
 };
-stack s;
+//未排序的
 void quiz(int t, const int *arry, int end, int start = 0) {
-    
-    if (start == end) {
-        int temp = s.pop().pos + 1;
-        quiz(t, arry, end, temp);
+    static stack s;
+
+    if (s.isEmpty() && end == start) {
+        cout << "end" << endl;
+        return;
     }
 
     if (s.getsum() == t) {
         s.show();
         s.pop();
         quiz(t, arry, end, start);
-        // } else if (s.getsum() + arry[start] != t && start + 1 == end) {
-        //     s.pop();
-        //     quiz(t, arry, end, max, max - 1);
+    } else if (start == end) {
+        int temp = s.pop().pos + 1;
+        quiz(t, arry, end, temp);
     } else if (s.getsum() + arry[start] > t) {
-        s.pop();
-        quiz(t, arry, end, start);
-
+        quiz(t, arry, end, ++start);
     } else {
         s.push(arry[start], start);
-        s.show();
         quiz(t, arry, end, ++start);
     }
-    if (s.isEmpty()) {
-        cout << "end";
+}
+//排好序的
+void puzzle(int t, const int *arry, int end, int start = 0) {
+    static stack s;
+    if (s.isEmpty() && end == start) {
+        cout << "end" << endl;
         return;
     }
+    if (s.getsum() == t) {
+        s.show();
+        s.pop();
+        int temp = s.pop().pos + 1;
+        puzzle(t, arry, end, temp);
+    } else if (start == end || s.getsum() + arry[start] > t) {
+        int temp = s.pop().pos + 1;
+        quiz(t, arry, end, temp);
+    } else {
+        int temp = s.pop().pos + 1;
+        puzzle(t, arry, end, temp);
+    }
 }
-
 int main() {
     quiz(T, w, 6);
     return 0;
