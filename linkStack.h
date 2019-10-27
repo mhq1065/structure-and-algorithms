@@ -1,6 +1,7 @@
 //链栈
+#include <iostream>
 #include <stdio.h>
-
+using namespace std;
 template <typename T>
 class linkStack; //必须先声明
 
@@ -14,11 +15,13 @@ private:
 
 public:
     linkStackNode(const T &element, linkStackNode<T> *p = NULL) : ele(element), next(p){};
+    T getEle() const { return ele; };
+    linkStackNode<T> *getptr() const { return next; }
 };
 
 template <typename T>
 class linkStack {
-private:
+protected:
     linkStackNode<T> *top;
 
 public:
