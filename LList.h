@@ -37,6 +37,7 @@ public:
     void InsertAfter(T item); //当前位置之前插入
     bool remove();            //删除当前位置之后的元素
     void print();
+    Link<T> *Head() { return head; }; //返回头节点
 
 private:
     Link<T> *head;
